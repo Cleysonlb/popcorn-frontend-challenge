@@ -15,6 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     "downlevelIteration": true,
+    "useUnknownInCatchVariables": true,
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],

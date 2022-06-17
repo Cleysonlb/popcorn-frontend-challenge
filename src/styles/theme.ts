@@ -172,6 +172,14 @@ const theme = {
       200: "#FFF5CF",
     },
     white: "#FFF",
+    green: {
+      100: "#9AE6B4",
+      200: "#68D391",
+    },
+    red: {
+      100: "#FBB6CE",
+      200: "#F687B3",
+    },
   },
   viewport,
   spacing,

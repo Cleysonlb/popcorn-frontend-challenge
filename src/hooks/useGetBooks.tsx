@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const useFetchBooks = (bookTitle: string) => {
-  const [books, setBooks] = useState(null);
+  const [books, setBooks] = useState([] as any[]);
   const [searching, setSearching] = useState(false);
   const [searchingError, setSearchingError] = useState(false);
 
@@ -14,7 +14,7 @@ const useFetchBooks = (bookTitle: string) => {
     if (!minLength) {
       setSearchingError(false);
       setSearching(false);
-      setBooks(null);
+      setBooks([]);
       return;
     }
     setSearchingError(false);

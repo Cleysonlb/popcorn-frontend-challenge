@@ -5,6 +5,7 @@ import SearchBar from "@components/shared/SearchBar";
 import Card from "@components/shared/Card";
 import EmptyState from "@components/shared/EmptyState";
 import SkeletonCard from "@components/shared/SkeletonCard";
+import { Item } from "../../../types/book.types";
 
 const HomePage = () => {
   const [bookTitle, setBookTitle] = useState("");
@@ -12,7 +13,6 @@ const HomePage = () => {
   const { books, searchingError, searching } = useFetchBooks(bookTitle);
 
   const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log({ e });
     setBookTitle(e.target.value);
   };
 
@@ -20,8 +20,10 @@ const HomePage = () => {
     ? "No book found, please try again"
     : "What if you typed something in the search bar?";
 
+  console.log(searchingError);
+
   const renderEmptyState = () => {
-    if (!searching && (searchingError || !books)) {
+    if (!searching && (searchingError || books.length === 0)) {
       return <EmptyState message={handleMessage} />;
     }
   };
@@ -41,13 +43,13 @@ const HomePage = () => {
         {renderEmptyState()}
         <CardList>
           {renderLoadingState()}
-
           {books &&
             books
-              ?.slice(0, 5)
-              .map((book) => (
+              .slice(0, 5)
+              .map((book: Item) => (
                 <Card
                   key={book?.id}
+                  id={book?.id}
                   image={book?.volumeInfo?.imageLinks?.thumbnail}
                   title={book?.volumeInfo?.title}
                   publisher={book?.volumeInfo?.publisher}

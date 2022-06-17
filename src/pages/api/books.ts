@@ -1,11 +1,8 @@
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { Books } from "../../types/book.types";
 
-type Data = {
-  name: string;
-};
-
-const fetchBooks = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+const fetchBooks = async (req: NextApiRequest, res: NextApiResponse<Books>) => {
   const { query } = req;
   const googleBooksUrl = process.env.NEXT_PUBLIC_GOOGLE_BOOK_API_URL;
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
@@ -16,7 +13,7 @@ const fetchBooks = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     );
 
     res.send(response.data);
-  } catch (error) {
+  } catch (error: any) {
     res.send(error.response);
   }
 };
