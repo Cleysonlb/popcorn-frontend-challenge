@@ -1,4 +1,7 @@
 // jest.config.js
+const { compilerOptions } = require("./tsconfig");
+
+const { resolve } = require("path");
 module.exports = {
   collectCoverageFrom: [
     "**/*.{js,jsx,ts,tsx}",
@@ -33,4 +36,9 @@ module.exports = {
     "/node_modules/",
     "^.+\\.module\\.(css|sass|scss)$",
   ],
+
+  moduleNameMapper: {
+    "^@components/(.*)$": resolve(__dirname, "./src/components/$1"),
+    "^@hooks/(.*)$": resolve(__dirname, "./src/hooks/$1"),
+  },
 };
