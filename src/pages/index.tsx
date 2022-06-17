@@ -1,10 +1,11 @@
 import type { NextPage } from "next";
 import styled from "styled-components";
+import HomePage from "@components/Page/HomePage";
 
 const Home: NextPage = () => {
   return (
     <Container>
-      <h1>Hello Next.js</h1>
+      <HomePage />
     </Container>
   );
 };
