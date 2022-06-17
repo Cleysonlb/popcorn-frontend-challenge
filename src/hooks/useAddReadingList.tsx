@@ -42,7 +42,6 @@ const useAddReadingList = (book: Book) => {
 
   const handlerToggle = () => {
     const itemsFromStorage = getStorage();
-    console.log({ itemsFromStorage });
     const isFavouriteIncluded =
       itemsFromStorage.filter((b: Book) => b.id === book.id).length > 0;
     let newStorage = [];

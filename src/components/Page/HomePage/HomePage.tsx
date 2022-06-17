@@ -20,8 +20,6 @@ const HomePage = () => {
     ? "No book found, please try again"
     : "What if you typed something in the search bar?";
 
-  console.log(searchingError);
-
   const renderEmptyState = () => {
     if (!searching && (searchingError || books.length === 0)) {
       return <EmptyState message={handleMessage} />;

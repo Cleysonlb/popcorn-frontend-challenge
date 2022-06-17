@@ -19,7 +19,7 @@ const Card = ({ id, image, title, authors, publisher }: CardProps) => {
     id,
     image,
     title,
-    authors: authors.join(", "),
+    authors: authors ? authors.join(", ") : "",
     publisher,
   };
 
