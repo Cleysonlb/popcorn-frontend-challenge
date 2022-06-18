@@ -24,8 +24,6 @@ const Card = ({
 }: CardProps) => {
   const handleImageError = image ? image : imageNotFound;
 
-  console.log({ authors });
-
   const book = {
     id,
     image,

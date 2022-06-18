@@ -18,8 +18,6 @@ const HomePage = () => {
     setBookTitle(e.target.value);
   };
 
-  console.log({ readList });
-
   const handleMessage = searchingError
     ? "No book found, please try again"
     : "What if you typed something in the search bar?";
