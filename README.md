@@ -52,3 +52,7 @@ NEXT_PUBLIC_APP_URL=
 - [ ] Add storybook
 - [ ] I18n to localization
 - [ ] Improve test coverage
+
+### What could be improved
+
+Please check the [issues](https://github.com/Cleysonlb/popcorn-frontend-challenge/issues) section to see more.
