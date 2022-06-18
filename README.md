@@ -51,4 +51,4 @@ NEXT_PUBLIC_APP_URL=
 ### ToDo
 - [ ] Add storybook
 - [ ] I18n to localization
-
+- [ ] Improve test coverage
