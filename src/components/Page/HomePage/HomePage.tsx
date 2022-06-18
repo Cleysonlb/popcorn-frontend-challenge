@@ -6,7 +6,6 @@ import Card from "@components/shared/Card";
 import EmptyState from "@components/shared/EmptyState";
 import SkeletonCard from "@components/shared/SkeletonCard";
 import { Item } from "../../../types/book.types";
-import { CardProps } from "@components/shared/Card/Card";
 
 const HomePage = () => {
   const [bookTitle, setBookTitle] = useState("");

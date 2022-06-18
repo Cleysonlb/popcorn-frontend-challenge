@@ -39,8 +39,8 @@ const Card = ({
     useAddReadingList(book);
 
   useEffect(() => {
-    const a = getStorage();
-    setReadList(a);
+    const bookStoraged = getStorage();
+    setReadList(bookStoraged);
   }, [handlerFavourite]);
 
   return (
@@ -52,7 +52,7 @@ const Card = ({
         <Title>{title}</Title>
         <Authors>
           <b>Authors:</b>{" "}
-          {/* {typeof authors === "string" ? authors : authors.join(", ")} */}
+          {typeof authors === "string" ? authors : authors.join(", ")}
         </Authors>
         <Publisher>{publisher}</Publisher>
       </Info>
