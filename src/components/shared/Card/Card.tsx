@@ -52,7 +52,9 @@ const Card = ({
         <Title>{title}</Title>
         <Authors>
           <b>Authors:</b>{" "}
-          {typeof authors === "string" ? authors : authors.join(", ")}
+          {authors && authors?.length > 0 && Array.isArray(authors)
+            ? authors.join(", ")
+            : ""}
         </Authors>
         <Publisher>{publisher}</Publisher>
       </Info>
