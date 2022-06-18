@@ -31,7 +31,9 @@ const Card = ({
     image,
     title,
     authors:
-      authors.length > 0 && Array.isArray(authors) ? authors.join(", ") : "",
+      authors && authors?.length > 0 && Array.isArray(authors)
+        ? authors.join(", ")
+        : "",
     publisher,
   };
 

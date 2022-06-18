@@ -88,12 +88,23 @@ const Wrapper = styled.div``;
 const Container = styled.div`
   margin: 0 auto;
   max-width: ${(props) => props.theme.viewport.desktop};
+  padding: ${(props) => props.theme.spacing.space[8]};
+  @media (max-width: ${(props) => props.theme.viewport.tablet}) {
+    padding: 0 ${(props) => props.theme.spacing.space[4]};
+  }
 `;
 const CardList = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: auto;
   grid-gap: 1rem;
+
+  @media (max-width: ${(props) => props.theme.viewport.tablet}) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+  }
 `;
 
 const ReadingListContainer = styled.div`

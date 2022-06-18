@@ -26,6 +26,10 @@ const Header = styled.div`
   margin: 0 auto;
   max-width: ${(props) => props.theme.viewport.desktop};
   padding: ${(props) => props.theme.spacing.space[8]} 0;
+  @media (max-width: ${(props) => props.theme.viewport.tablet}) {
+    padding: ${(props) => props.theme.spacing.space[8]}
+      ${(props) => props.theme.spacing.space[4]};
+  }
 `;
 const LogoContainer = styled.a`
   font-family: ${(props) => props.theme.typography.fonts.poppins};
