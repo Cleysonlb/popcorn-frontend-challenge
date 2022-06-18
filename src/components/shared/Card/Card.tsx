@@ -3,8 +3,10 @@ import styled from "styled-components";
 import Image from "next/image";
 import imageNotFound from "../../../../public/image_empty_state.png";
 import useAddReadingList from "@hooks/useAddReadingList";
+import { useEffect } from "react";
 
 export interface CardProps {
+  setReadList: <setState>(state: any) => void;
   id: string;
   image: string | undefined;
   title: string | undefined;
@@ -12,18 +14,34 @@ export interface CardProps {
   publisher: string | undefined;
 }
 
-const Card = ({ id, image, title, authors, publisher }: CardProps) => {
+const Card = ({
+  setReadList,
+  id,
+  image,
+  title,
+  authors,
+  publisher,
+}: CardProps) => {
   const handleImageError = image ? image : imageNotFound;
+
+  console.log({ authors });
 
   const book = {
     id,
     image,
     title,
-    authors: authors ? authors.join(", ") : "",
+    authors:
+      authors.length > 0 && Array.isArray(authors) ? authors.join(", ") : "",
     publisher,
   };
 
-  const { handlerFavourite, handlerToggle } = useAddReadingList(book);
+  const { getStorage, handlerFavourite, handlerToggle } =
+    useAddReadingList(book);
+
+  useEffect(() => {
+    const a = getStorage();
+    setReadList(a);
+  }, [handlerFavourite]);
 
   return (
     <Container>
@@ -34,7 +52,7 @@ const Card = ({ id, image, title, authors, publisher }: CardProps) => {
         <Title>{title}</Title>
         <Authors>
           <b>Authors:</b>{" "}
-          {typeof authors === "string" ? authors : authors.join(", ")}
+          {/* {typeof authors === "string" ? authors : authors.join(", ")} */}
         </Authors>
         <Publisher>{publisher}</Publisher>
       </Info>

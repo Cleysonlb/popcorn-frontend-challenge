@@ -6,15 +6,19 @@ import Card from "@components/shared/Card";
 import EmptyState from "@components/shared/EmptyState";
 import SkeletonCard from "@components/shared/SkeletonCard";
 import { Item } from "../../../types/book.types";
+import { CardProps } from "@components/shared/Card/Card";
 
 const HomePage = () => {
   const [bookTitle, setBookTitle] = useState("");
+  const [readList, setReadList] = useState([{}]);
 
   const { books, searchingError, searching } = useFetchBooks(bookTitle);
 
   const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBookTitle(e.target.value);
   };
+
+  console.log({ readList });
 
   const handleMessage = searchingError
     ? "No book found, please try again"
@@ -52,9 +56,29 @@ const HomePage = () => {
                   title={book?.volumeInfo?.title}
                   publisher={book?.volumeInfo?.publisher}
                   authors={book?.volumeInfo?.authors}
+                  setReadList={setReadList}
                 />
               ))}
         </CardList>
+        {readList.length > 0 && (
+          <ReadingListContainer>
+            <ReadingListTitle>My Reading List</ReadingListTitle>
+            <CardList>
+              {readList.length > 0 &&
+                readList.map((book: any) => (
+                  <Card
+                    key={book?.id}
+                    id={book?.id}
+                    image={book?.image}
+                    title={book?.title}
+                    publisher={book?.publisher}
+                    authors={book?.authors ? book?.authors : ""}
+                    setReadList={setReadList}
+                  />
+                ))}
+            </CardList>
+          </ReadingListContainer>
+        )}
       </Container>
     </Wrapper>
   );
@@ -66,8 +90,19 @@ const Container = styled.div`
   max-width: ${(props) => props.theme.viewport.desktop};
 `;
 const CardList = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
+`;
+
+const ReadingListContainer = styled.div`
+  margin-top: ${(props) => props.theme.spacing.space[10]};
+`;
+
+const ReadingListTitle = styled.h2`
+  font-weight: ${(props) => props.theme.typography.fontWeights.bold};
+  margin-bottom: ${(props) => props.theme.spacing.space[10]};
 `;
 
 export default HomePage;
