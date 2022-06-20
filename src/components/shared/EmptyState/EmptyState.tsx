@@ -1,5 +1,5 @@
 import React from "react";
-import emptyStateIllustration from "../../../../public/green_cat.svg";
+import emptyStateIllustration from "@assets/green_cat.svg";
 import Image from "next/image";
 import styled from "styled-components";
 

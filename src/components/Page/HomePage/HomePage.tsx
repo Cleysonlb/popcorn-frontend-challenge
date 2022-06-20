@@ -5,11 +5,11 @@ import SearchBar from "@components/shared/SearchBar";
 import Card from "@components/shared/Card";
 import EmptyState from "@components/shared/EmptyState";
 import SkeletonCard from "@components/shared/SkeletonCard";
-import { Item } from "../../../types/book.types";
+import { Item, ReadingList } from "../../../types/book.types";
 
 const HomePage = () => {
   const [bookTitle, setBookTitle] = useState("");
-  const [readList, setReadList] = useState([{}]);
+  const [readList, setReadList] = useState<ReadingList | null>(null);
 
   const { books, searchingError, searching } = useFetchBooks(bookTitle);
 
@@ -45,9 +45,9 @@ const HomePage = () => {
           {books &&
             books
               .slice(0, 5)
-              .map((book: Item) => (
+              .map((book: Item, key: number) => (
                 <Card
-                  key={book?.id}
+                  key={key}
                   id={book?.id}
                   image={book?.volumeInfo?.imageLinks?.thumbnail}
                   title={book?.volumeInfo?.title}
@@ -57,19 +57,19 @@ const HomePage = () => {
                 />
               ))}
         </CardList>
-        {readList.length > 0 && (
+        {readList && readList?.length > 0 && (
           <ReadingListContainer>
             <ReadingListTitle>My Reading List</ReadingListTitle>
             <CardList>
-              {readList.length > 0 &&
-                readList.map((book: any) => (
+              {readList?.length > 0 &&
+                readList?.map((readingBook: ReadingList, key: number) => (
                   <Card
-                    key={book?.id}
-                    id={book?.id}
-                    image={book?.image}
-                    title={book?.title}
-                    publisher={book?.publisher}
-                    authors={book?.authors ? book?.authors : ""}
+                    key={key}
+                    id={readingBook?.id}
+                    image={readingBook?.image}
+                    title={readingBook?.title}
+                    publisher={readingBook?.publisher}
+                    authors={readingBook?.authors ? readingBook?.authors : ""}
                     setReadList={setReadList}
                   />
                 ))}

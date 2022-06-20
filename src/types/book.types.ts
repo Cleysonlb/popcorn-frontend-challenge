@@ -4,6 +4,18 @@ export interface Books {
   items: Item[];
 }
 
+export interface ReadingList {
+  length: number;
+  map(
+    arg0: (readingBook: ReadingList, key: number) => JSX.Element
+  ): import("react").ReactNode;
+  authors: string | string[] | null;
+  id: string;
+  image: string;
+  publisher: string;
+  title: string;
+}
+
 export interface Item {
   kind: Kind;
   id: string;
