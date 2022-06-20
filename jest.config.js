@@ -59,7 +59,8 @@ module.exports = {
 
     // Handle image imports
     // https://jestjs.io/docs/webpack#handling-static-assets
-    "^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$/i": `<rootDir>/__mocks__/fileMock.js`,
+    "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+      "<rootDir>/__mocks__/fileMock.js",
 
     // Handle module aliases
     "^@components/(.*)$": resolve(__dirname, "./src/components/$1"),

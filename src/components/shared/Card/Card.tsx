@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import imageNotFound from "../../../../public/image_empty_state.png";
+import imageNotFound from "@assets/image_empty_state.png";
 import useAddReadingList from "@hooks/useAddReadingList";
 import { useEffect } from "react";
 
@@ -10,7 +10,7 @@ export interface CardProps {
   id: string;
   image: string | undefined;
   title: string | undefined;
-  authors: string[];
+  authors: string | string[];
   publisher: string | undefined;
 }
 
